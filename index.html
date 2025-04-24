@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uttarakhand Tourism</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body >
+
+    <div>
+        <header class="bg-white dark:bg-gray-900">
+            <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+                <div class="flex h-16 items-center justify-between">
+                    <div class="items-center gap-12">
+                        <a class="text-3xl font-bold block text-red dark:text-gray-600" href="#">
+                            <span class="text-teal-600"> Home</span>
+                        </a>
+                    </div>
+    
+                    <div class="hidden md:block">
+                        <nav aria-label="Global">
+                            <ul class="flex items-center gap-8 text-sm">
+                                <li>
+                                    <a class="text-2xl font-bold text-gray-900 transition hover:text-gray-600 dark:text-white dark:hover:text-white/75"
+                                        href="{{ url_for('register') }}">
+                                        Register
+                                    </a>
+                                </li>
+    
+                                <li>
+                                    <a class="text-2xl font-bold text-gray-900 transition hover:text-gray-600 dark:text-white dark:hover:text-white/75"
+                                        href="{{ url_for('review') }}">
+                                        Submit a Review
+                                    </a>
+                                </li>
+    
+                                <li>
+                                    <a class="text-2xl font-bold text-gray-900 transition hover:text-gray-600 dark:text-white dark:hover:text-white/75"
+                                        href="{{ url_for('complaint') }}">
+                                        Complaint
+                                    </a>
+                                </li>
+    
+                                <li>
+                                    <a class="text-2xl font-bold text-gray-900 transition hover:text-gray-600 dark:text-white dark:hover:text-white/75"
+                                        href="{{ url_for('helplines') }}">
+                                        Helplines
+                                    </a>
+                                </li>
+    
+                            </ul>
+                        </nav>
+                    </div>
+    
+                    <div class="flex items-center gap-4">
+                        <div class="sm:flex sm:gap-4">
+                            <a class="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm dark:hover:bg-teal-500"
+                                href="#">
+                                Logout
+                            </a>
+                        </div>
+    
+                        <div class="block md:hidden">
+                            <button
+                                class="rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="text-center">
+        <h1 class="text-4xl font-bold text-gray-900 sm:text-5xl dark:text-white">
+            Welcome to
+            <strong class="text-teal-600"> Uttarakhand </strong>
+            Tourism
+        </h1>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>Recent Reviews</h2>
+    {% if reviews %}
+        <ul>
+        {% for review in reviews %}
+            <li>
+                <strong>{{ review.place_name }}</strong> - Rated: {{ review.rating }}/5<br>
+                {{ review.review_text }}<br>
+                <em>By {{ review.author.username }}</em>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No reviews available.</p>
+    {% endif %}
+</body>
+
+    
+</html>
